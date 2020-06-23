@@ -10,25 +10,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FlightMobileApp.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class CommandController : ControllerBase
     {
         private readonly IClient _client;
 
-        CommandController(IClient client)
+        public CommandController(IClient client)
         {
             _client = client;
             _client.Start();//todo check where i should start
         }
 
         // GET api/<CommandController>
+        [Route("api/[controller]")]
         [HttpGet]
         public string Get()
         {
             return "Hello World!";
         }
 
+        [Route("api/[controller]")]
         // POST api/<CommandController>
         [HttpPost]
         public void Post([FromBody] Command cmd)
@@ -37,10 +38,16 @@ namespace FlightMobileApp.Controllers
         }
 
         // GET screenshot/
-        [Route("screenshot"), HttpGet]
-        public void GetScreenshot()
+        [Route("screenshot")]
+        [HttpGet]
+        public List<byte> GetScreenshot()
         {
             //todo get screen shot from simulator
+            Console.Out.WriteLine("in screenshot");
+            List<byte> pixels = new List<byte>();
+            pixels.Add(2);
+            pixels.Add(1);
+            return pixels;
         }
     }
 }

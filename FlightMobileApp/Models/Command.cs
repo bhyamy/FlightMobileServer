@@ -9,10 +9,10 @@ namespace FlightMobileApp.Models
 {
     public class Command
     {
-        [JsonPropertyName("address")]
+        [JsonPropertyName("Address")]
         public string Address { set; get; }
 
-        [JsonPropertyName("value"), Range(-1, 1)]
+        [JsonPropertyName("Value"), Range(-1, 1)]
         public float Value { set; get; }
     }
 }
