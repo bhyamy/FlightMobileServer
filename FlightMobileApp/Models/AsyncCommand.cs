@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FlightMobileApp.Models
 {
-    public enum Result { Ok, NotOk }
+    public enum Result { NotOk, Ok }
     
     public class AsyncCommand
     {
