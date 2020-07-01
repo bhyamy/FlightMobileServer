@@ -75,12 +75,13 @@ namespace FlightMobileApp.Models
             NetworkStream stream = _client.GetStream();
             float val = Convert.ToSingle(prop.GetValue(cmd, null));
             // sending message
-            string message = "set" + " " + _addressDictionary[prop.Name] + " " + val + "\n";
+            string message = "set " + _addressDictionary[prop.Name] + " " + val + " \n";
             Byte[] sendBuffer = Encoding.ASCII.GetBytes(message);
             stream.Write(sendBuffer, 0, sendBuffer.Length);
-            message = "get" + " " + _addressDictionary[prop.Name] + " " + val + "\n";
+            message = "get " + _addressDictionary[prop.Name] + " \n";
             sendBuffer = Encoding.ASCII.GetBytes(message);
             stream.Write(sendBuffer, 0, sendBuffer.Length);
+            stream.Flush();
             // receiving answer
             Byte[] recvBuffer = new Byte[1024];
             int nRead = stream.Read(recvBuffer, 0, 1024);
